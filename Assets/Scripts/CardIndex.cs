@@ -8,15 +8,4 @@ public class CardIndex : MonoBehaviour
     public int cardIndex;
     public bool CanBeMoved = true;
     public int ATKleft, ATKright, ATKtop, ATKbottom;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
