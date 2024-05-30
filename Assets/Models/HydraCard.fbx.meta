@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdcd7f6928ac85c4482043dced41b221
+guid: bf5a098a2021ea24587fff25b09d751b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BLAU
-    second: {fileID: 2100000, guid: 9f7706ead76f57d41bf1cc79f5dab08e, type: 2}
+    second: {fileID: 2100000, guid: a0f0724e8d891e74a84061378992a092, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ROWD
-    second: {fileID: 2100000, guid: 43094c29583590e47b27485303fdc452, type: 2}
+    second: {fileID: 2100000, guid: 02ab49c235ee4634f80d69bd52e4a90d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
