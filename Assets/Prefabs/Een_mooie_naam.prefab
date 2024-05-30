@@ -34,8 +34,8 @@ Transform:
   m_LocalScale: {x: 2.5, y: 0.1, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8749371368205096364}
   - {fileID: 7811313820598533446}
+  - {fileID: 8749371368205096364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2883048315147665973
@@ -101,8 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0643740f36c77b45b81037b02044c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardStartPos: {x: -6, y: 0, z: -11}
+  cardStartPosP1: {x: 0, y: 0, z: 0}
+  cardStartPosP2: {x: 0, y: 0, z: 0}
   cardIndex: 0
+  HandIndex: 0
   CanBeMoved: 1
   ATKleft: 1
   ATKright: 3
@@ -116,7 +118,8 @@ MonoBehaviour:
   DSAtkTextBottom: {fileID: 2668195064914111245}
   DSAtkTextRight: {fileID: 8814523920285547328}
   DSAtkTextLeft: {fileID: 6188138652022237814}
-  IsYours: 0
+  IsYoursBlue: 0
+  IsYoursRed: 0
   IsInHand: 0
   timer: 0
 --- !u!54 &8363209257718379005

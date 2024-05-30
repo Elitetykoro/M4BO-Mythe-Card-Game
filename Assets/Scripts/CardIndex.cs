@@ -24,6 +24,11 @@ public class CardIndex : MonoBehaviour
 
     private void Start()
     {
+        if(IsYoursRed)
+        {
+            rot += new Vector3(0f, 0f, 180f);
+            transform.rotation = Quaternion.Euler(rot);
+        }
         GMP1 = GameObject.Find("GameManagerPlayer1");
         GMP2 = GameObject.Find("GameManagerPlayer2");
         transform.position = new Vector3(20, 0, 0);
@@ -78,6 +83,11 @@ public class CardIndex : MonoBehaviour
     {
         GMP2.GetComponent<GameManagerP2>().AvailableHandSlotsP2[HandIndex] = true;
         GMP2.GetComponent<GameManagerP2>().DrawCard();
+    }
+    public void EndTurnRotate()
+    {
+        rot += new Vector3(0f, 180f, 0f);
+        transform.rotation = Quaternion.Euler(rot);
     }
 
 }

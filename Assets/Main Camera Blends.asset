@@ -17,10 +17,28 @@ MonoBehaviour:
     m_To: '**ANY CAMERA**'
     m_Blend:
       m_Style: 1
-      m_Time: 2
+      m_Time: 0.2
       m_CustomCurve:
         serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0.11279678
+          inSlope: 6.104972
+          outSlope: 6.104972
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.99999994
+          value: 1
+          inSlope: 6.104972
+          outSlope: 6.104972
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
         m_RotationOrder: 0
