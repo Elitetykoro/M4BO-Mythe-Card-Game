@@ -264,6 +264,7 @@ public class cardPlacementPlayer1 : MonoBehaviour
                             break;
                     }
                     heldCard.GetComponent<CardIndex>().DrawNewCardP1();
+                    TMR.GetComponent<TurnManager>().CardsOnBoard.Add(heldCard);
                     heldCard = null;
                     TMR.GetComponent<TurnManager>().TurnChangeToP2();
                     
@@ -271,7 +272,7 @@ public class cardPlacementPlayer1 : MonoBehaviour
                     //GridSquares[0].GetComponent<GridIndex>().PlacedCard.GetComponent<CardIndex>().
 
                 }
-                else if (hit.collider.CompareTag("Table"))
+                else if (hit.collider.CompareTag("Table")||hit.collider.CompareTag("Card"))
                 {
                     StopCoroutine(HoldCard());
                     heldCard.transform.position = heldCard.GetComponent<CardIndex>().cardStartPosP1;
