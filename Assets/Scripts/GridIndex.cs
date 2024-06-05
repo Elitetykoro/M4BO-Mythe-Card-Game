@@ -8,5 +8,6 @@ public class GridIndex : MonoBehaviour
     public int gridIndex;
     public GameObject PlacedCard;
     public bool IsFilledWithCard;
+    
 
 }

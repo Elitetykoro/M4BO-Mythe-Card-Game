@@ -12,8 +12,8 @@ public class CardIndex : MonoBehaviour
     public int ATKleft, ATKright, ATKtop, ATKbottom;
     [SerializeField] private TMP_Text AtkTextTop, AtkTextBottom, AtkTextRight, AtkTextLeft;
     [SerializeField] private TMP_Text DSAtkTextTop, DSAtkTextBottom, DSAtkTextRight, DSAtkTextLeft;
-    [SerializeField] private bool IsYoursBlue;
-    [SerializeField] private bool IsYoursRed;
+    [SerializeField] public bool IsYoursBlue;
+    [SerializeField] public bool IsYoursRed;
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
@@ -26,7 +26,7 @@ public class CardIndex : MonoBehaviour
     {
         if(IsYoursRed)
         {
-            rot += new Vector3(0f, 0f, 180f);
+            rot += new Vector3(0f, 180f, 180f);
             transform.rotation = Quaternion.Euler(rot);
         }
         GMP1 = GameObject.Find("GameManagerPlayer1");
@@ -59,7 +59,7 @@ public class CardIndex : MonoBehaviour
     {
         if (!IsYoursBlue)
         {
-            rot += new Vector3(0f, 0f, 180f);
+            rot.z = 0f;
             IsYoursBlue = true; 
             IsYoursRed = false;
         }  
@@ -68,7 +68,7 @@ public class CardIndex : MonoBehaviour
     {
         if (!IsYoursRed) 
         {
-            rot += new Vector3(0f, 0f, 180f);
+            rot.z = 180f;
             IsYoursBlue = false;
             IsYoursRed = true;
         }
@@ -84,10 +84,28 @@ public class CardIndex : MonoBehaviour
         GMP2.GetComponent<GameManagerP2>().AvailableHandSlotsP2[HandIndex] = true;
         GMP2.GetComponent<GameManagerP2>().DrawCard();
     }
-    public void EndTurnRotate()
+    public void EndTurnRotateP2POV()
     {
-        rot += new Vector3(0f, 180f, 0f);
-        transform.rotation = Quaternion.Euler(rot);
+        if (IsYoursBlue)
+        {
+            rot = new Vector3(0f, 180f, 0f);
+        }
+        if (IsYoursRed)
+        {
+            rot = new Vector3(0f, 180f, 180f);
+        }
+    }
+    public void EndTurnRotateP1POV()
+    {
+        if (IsYoursBlue)
+        {
+            rot = new Vector3(0f, 0f, 0f);
+        }
+        if (IsYoursRed)
+        {
+            rot = new Vector3(0f, 0f, 180f);
+        }
+        
     }
 
 }
