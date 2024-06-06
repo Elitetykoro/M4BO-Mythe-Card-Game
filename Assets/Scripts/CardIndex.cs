@@ -10,38 +10,43 @@ public class CardIndex : MonoBehaviour
     public int HandIndex;
     public bool CanBeMoved = true;
     public int ATKleft, ATKright, ATKtop, ATKbottom;
-    [SerializeField] private TMP_Text AtkTextTop, AtkTextBottom, AtkTextRight, AtkTextLeft;
-    [SerializeField] private TMP_Text DSAtkTextTop, DSAtkTextBottom, DSAtkTextRight, DSAtkTextLeft;
+    [SerializeField] private TMP_Text RedAtkTextTop, RedAtkTextBottom, RedAtkTextRight, RedAtkTextLeft;
+    [SerializeField] private TMP_Text BlueAtkTextTop, BlueAtkTextBottom, BlueAtkTextRight, BlueAtkTextLeft;
     [SerializeField] public bool IsYoursBlue;
     [SerializeField] public bool IsYoursRed;
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
-    private Rigidbody RB;
+    [SerializeField] private GameObject Canvas1;
+    [SerializeField] private GameObject Canvas2;
+     
+
 
     private GameObject GMP1;
     private GameObject GMP2;
 
     private void Start()
     {
-        if(IsYoursRed)
+        
+
+
+        if (IsYoursRed)
         {
-            rot += new Vector3(0f, 180f, 180f);
+            rot = new Vector3(0f, 180f, 180f);
             transform.rotation = Quaternion.Euler(rot);
         }
         GMP1 = GameObject.Find("GameManagerPlayer1");
         GMP2 = GameObject.Find("GameManagerPlayer2");
         transform.position = new Vector3(20, 0, 0);
         this.gameObject.SetActive(false);
-        RB = GetComponent<Rigidbody>();
-        AtkTextTop.text = ATKtop.ToString();
-        AtkTextBottom.text = ATKbottom.ToString();
-        AtkTextLeft.text = ATKleft.ToString();
-        AtkTextRight.text = ATKright.ToString();
-        DSAtkTextTop.text = ATKtop.ToString();
-        DSAtkTextBottom.text = ATKbottom.ToString();
-        DSAtkTextLeft.text = ATKleft.ToString();
-        DSAtkTextRight.text = ATKright.ToString();
+        RedAtkTextTop.text = ATKtop.ToString();
+        RedAtkTextBottom.text = ATKbottom.ToString();
+        RedAtkTextLeft.text = ATKleft.ToString();
+        RedAtkTextRight.text = ATKright.ToString();
+        BlueAtkTextTop.text = ATKtop.ToString();
+        BlueAtkTextBottom.text = ATKbottom.ToString();
+        BlueAtkTextLeft.text = ATKleft.ToString();
+        BlueAtkTextRight.text = ATKright.ToString();
     }
 
     private void Update()

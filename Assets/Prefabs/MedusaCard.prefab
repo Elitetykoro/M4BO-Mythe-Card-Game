@@ -169,7 +169,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1954463406519492283}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5695984623001865789
 MeshFilter:
@@ -711,18 +711,20 @@ MonoBehaviour:
   ATKright: 4
   ATKtop: 4
   ATKbottom: 1
-  AtkTextTop: {fileID: 1544397636659135888}
-  AtkTextBottom: {fileID: 6736302872476206758}
-  AtkTextRight: {fileID: 753324713025663965}
-  AtkTextLeft: {fileID: 2448828075194483515}
-  DSAtkTextTop: {fileID: 595679797223407890}
-  DSAtkTextBottom: {fileID: 8741041267056972375}
-  DSAtkTextRight: {fileID: 1423857415487119051}
-  DSAtkTextLeft: {fileID: 5605404103321980204}
+  RedAtkTextTop: {fileID: 1544397636659135888}
+  RedAtkTextBottom: {fileID: 6736302872476206758}
+  RedAtkTextRight: {fileID: 753324713025663965}
+  RedAtkTextLeft: {fileID: 2448828075194483515}
+  BlueAtkTextTop: {fileID: 595679797223407890}
+  BlueAtkTextBottom: {fileID: 8741041267056972375}
+  BlueAtkTextRight: {fileID: 1423857415487119051}
+  BlueAtkTextLeft: {fileID: 5605404103321980204}
   IsYoursBlue: 0
   IsYoursRed: 0
   IsInHand: 0
   timer: 0
+  Canvas1: {fileID: 0}
+  Canvas2: {fileID: 0}
 --- !u!1 &4976684614306379194
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +737,7 @@ GameObject:
   - component: {fileID: 838890842836883720}
   - component: {fileID: 2268635657149118282}
   - component: {fileID: 3724763384557991829}
+  - component: {fileID: 7003300361262617451}
   m_Layer: 0
   m_Name: carcanvasDS
   m_TagString: Untagged
@@ -759,7 +762,7 @@ RectTransform:
   - {fileID: 6673136999888722501}
   - {fileID: 397845802585324641}
   m_Father: {fileID: 1954463406519492283}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -829,6 +832,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7003300361262617451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976684614306379194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a9822bd52059242918ba3dd900a907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextTransform: []
 --- !u!1 &5131618816707819456
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +857,7 @@ GameObject:
   - component: {fileID: 4839121228799841566}
   - component: {fileID: 3881489051410049556}
   - component: {fileID: 3291295092020170239}
+  - component: {fileID: 4161292859455019816}
   m_Layer: 0
   m_Name: carcanvasUS
   m_TagString: Untagged
@@ -865,7 +882,7 @@ RectTransform:
   - {fileID: 8552322035070555312}
   - {fileID: 6355135389531017308}
   m_Father: {fileID: 1954463406519492283}
-  m_RootOrder: -1
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -935,6 +952,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4161292859455019816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131618816707819456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a9822bd52059242918ba3dd900a907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextTransform: []
 --- !u!1 &5861073834455346398
 GameObject:
   m_ObjectHideFlags: 0
