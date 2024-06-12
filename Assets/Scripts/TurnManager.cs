@@ -17,57 +17,50 @@ public class TurnManager : MonoBehaviour
     public GameObject WinTextBlue;
     public GameObject WinTextRed;
     public GameObject WinTextTie;
-    
+    public int DavidHealthPoints = 30;
+    public int GoliathHealthPoints = 45;
+    [SerializeField] GameObject gameManagerP1;
+    [SerializeField] GameObject gameManagerP2;
+    GameObject[] Grids;
 
- 
 
+    private void Start()
+    {
+        Grids = GameObject.FindGameObjectsWithTag("Grid");
+    }
     private void Update()
     {
         
         EndCards = CardsOnBoard.ToArray();
-        
+
 
 
         if (TurnCount == 8)
         {
-            EndCards = CardsOnBoard.ToArray();
-            for (int i = 0; i < EndCards.Length; i++)
-            {
-                if (EndCards[i].GetComponent<CardIndex>().IsYoursBlue)
-                {
-                    BlueScore++;
-                }
-                if (EndCards[i].GetComponent<CardIndex>().IsYoursRed)
-                {
-                    RedScore++;
-                }
-            }
-
-            if(BlueScore > RedScore)
-            {
-                WinTextBlue.SetActive(true);
-            }else if(RedScore > BlueScore)
-            {
-                WinTextRed.SetActive(true);
-            }else if(RedScore == BlueScore)
-            {
-                WinTextTie.SetActive(true);
-            }
+            RoundEnd();
         }
+        if (DavidHealthPoints <= 0) WinTextBlue.SetActive(true);
+        else if (GoliathHealthPoints <= 0) WinTextRed.SetActive(true);
     }
     public void TurnChangeToP2()
     {
         TurnCount++;
-        StartCoroutine(RotateToP2());
-        P2Cam.SetActive(true);
-        P1Cam.SetActive(false);
+        if (TurnCount < 8)
+        {
+            StartCoroutine(RotateToP2());
+            P2Cam.SetActive(true);
+            P1Cam.SetActive(false);
+        }
     }
     public void TurnChangeToP1()
     {     
         TurnCount++;
-        StartCoroutine(RotateToP1());
-        P1Cam.SetActive(true);
-        P2Cam.SetActive(false);
+        if (TurnCount < 8)
+        {
+            StartCoroutine(RotateToP1());
+            P1Cam.SetActive(true);
+            P2Cam.SetActive(false);
+        }
     }
 
     IEnumerator RotateToP2()
@@ -88,6 +81,31 @@ public class TurnManager : MonoBehaviour
         }
         yield return new WaitForEndOfFrame();
         yield break;
+    }
+    public void RoundEnd()
+    {
+        EndCards = CardsOnBoard.ToArray();
+        for (int i = 0; i < EndCards.Length; i++)
+        {
+            if (EndCards[i].GetComponent<CardIndex>().IsYoursBlue)
+            {
+                BlueScore++;
+            }
+            if (EndCards[i].GetComponent<CardIndex>().IsYoursRed)
+            {
+                RedScore++;
+            }
+        }
+        DavidHealthPoints -= RedScore;
+        GoliathHealthPoints -= BlueScore;
+        gameManagerP1.GetComponent<GameManagerP1>().DeckResetP1();
+        gameManagerP2.GetComponent<GameManagerP2>().DeckResetP2();
+        for (int i = 0; i < Grids.Length; i++)
+        {
+            Grids[i].GetComponent<GridIndex>().ClearGrid();
+        }
+        CardsOnBoard.Clear();
+        TurnCount = 0;
     }
 
 

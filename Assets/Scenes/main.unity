@@ -1428,6 +1428,10 @@ MonoBehaviour:
   WinTextBlue: {fileID: 973637617}
   WinTextRed: {fileID: 1400834695}
   WinTextTie: {fileID: 180684589}
+  DavidHealthPoints: 30
+  GoliathHealthPoints: 45
+  gameManagerP1: {fileID: 1305193812}
+  gameManagerP2: {fileID: 744908796}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1727,16 @@ MonoBehaviour:
   - {fileID: 128560005}
   - {fileID: 1572324724}
   AvailableHandSlotsP2: 010101
+  resetDeck:
+  - {fileID: 1431670467}
+  - {fileID: 259614298}
+  - {fileID: 1570050825}
+  - {fileID: 947280623}
+  - {fileID: 731982629}
+  - {fileID: 1482177932}
+  - {fileID: 1353650823}
+  - {fileID: 351583252}
+  - {fileID: 1306613079}
 --- !u!1001 &778402674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3105,6 +3119,16 @@ MonoBehaviour:
   - {fileID: 904973890}
   - {fileID: 588116021}
   AvailableHandSlotsP1: 010101
+  resetDeck:
+  - {fileID: 1655165332}
+  - {fileID: 1716853002}
+  - {fileID: 1764449356}
+  - {fileID: 18280912}
+  - {fileID: 90917580}
+  - {fileID: 1486679914}
+  - {fileID: 86146527}
+  - {fileID: 467214593}
+  - {fileID: 121782570}
 --- !u!1 &1306613079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4150795757346266742, guid: d371aec9cb678f143a06a41970a8b737, type: 3}

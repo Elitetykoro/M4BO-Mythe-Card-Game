@@ -39,10 +39,10 @@ public class CardIndex : MonoBehaviour
         GMP2 = GameObject.Find("GameManagerPlayer2");
         transform.position = new Vector3(20, 0, 0);
         this.gameObject.SetActive(false);
-        RedAtkTextTop.text = ATKtop.ToString();
-        RedAtkTextBottom.text = ATKbottom.ToString();
-        RedAtkTextLeft.text = ATKleft.ToString();
-        RedAtkTextRight.text = ATKright.ToString();
+        RedAtkTextBottom.text = ATKtop.ToString();
+        RedAtkTextTop.text = ATKbottom.ToString();
+        RedAtkTextRight.text = ATKleft.ToString();
+        RedAtkTextLeft.text = ATKright.ToString();
         BlueAtkTextTop.text = ATKtop.ToString();
         BlueAtkTextBottom.text = ATKbottom.ToString();
         BlueAtkTextLeft.text = ATKleft.ToString();
@@ -98,7 +98,17 @@ public class CardIndex : MonoBehaviour
         if (IsYoursRed)
         {
             rot = new Vector3(0f, 180f, 180f);
+
         }
+
+        RedAtkTextBottom.text = ATKtop.ToString();
+        RedAtkTextTop.text = ATKbottom.ToString();
+        RedAtkTextRight.text = ATKleft.ToString();
+        RedAtkTextLeft.text = ATKright.ToString();
+        BlueAtkTextBottom.text = ATKtop.ToString();
+        BlueAtkTextTop.text = ATKbottom.ToString();
+        BlueAtkTextRight.text = ATKleft.ToString();
+        BlueAtkTextLeft.text = ATKright.ToString();
     }
     public void EndTurnRotateP1POV()
     {
@@ -110,7 +120,14 @@ public class CardIndex : MonoBehaviour
         {
             rot = new Vector3(0f, 0f, 180f);
         }
-        
+        RedAtkTextTop.text = ATKtop.ToString();
+        RedAtkTextBottom.text = ATKbottom.ToString();
+        RedAtkTextLeft.text = ATKleft.ToString();
+        RedAtkTextRight.text = ATKright.ToString();
+        BlueAtkTextBottom.text = ATKtop.ToString();
+        BlueAtkTextTop.text = ATKbottom.ToString();
+        BlueAtkTextRight.text = ATKleft.ToString();
+        BlueAtkTextLeft.text = ATKright.ToString();
     }
 
 }
