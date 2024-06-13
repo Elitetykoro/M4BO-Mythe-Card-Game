@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -17,15 +18,34 @@ public class TurnManager : MonoBehaviour
     public GameObject WinTextBlue;
     public GameObject WinTextRed;
     public GameObject WinTextTie;
+    public TMP_Text GoliathHpText;
+    public TMP_Text DavidHpText;
+    private int GoliathHealth = 35;
+    private int DavidHealth = 30;
     
 
- 
+
+
+
+    private void Start()
+    {
+        if(PlayerPrefs.HasKey("GHP") == false)
+        {
+            PlayerPrefs.SetInt("GHP", GoliathHealth);
+        }
+        if (PlayerPrefs.HasKey("DHP") == false)
+        {
+            PlayerPrefs.SetInt("DHP", DavidHealth);
+        }
+    }
 
     private void Update()
     {
         
         EndCards = CardsOnBoard.ToArray();
-        
+        DavidHpText.text = ("David: " + PlayerPrefs.GetInt("DHP").ToString());
+        GoliathHpText.text = ("Goliath: " + PlayerPrefs.GetInt("GHP").ToString());
+
 
 
         if (TurnCount == 8)
@@ -42,17 +62,22 @@ public class TurnManager : MonoBehaviour
                     RedScore++;
                 }
             }
+            EndRound();
 
-            if(BlueScore > RedScore)
-            {
-                WinTextBlue.SetActive(true);
-            }else if(RedScore > BlueScore)
-            {
-                WinTextRed.SetActive(true);
-            }else if(RedScore == BlueScore)
-            {
-                WinTextTie.SetActive(true);
-            }
+
+
+            //if (BlueScore > RedScore)
+            //{
+            //    WinTextBlue.SetActive(true);
+            //}
+            //else if (RedScore > BlueScore)
+            //{
+            //    WinTextRed.SetActive(true);
+            //}
+            //else if (RedScore == BlueScore)
+            //{
+            //    WinTextTie.SetActive(true);
+            //}
         }
     }
     public void TurnChangeToP2()
@@ -90,6 +115,22 @@ public class TurnManager : MonoBehaviour
         yield break;
     }
 
+    private void EndRound()
+    {
+        PlayerPrefs.SetInt("GHP", PlayerPrefs.GetInt("GHP") - BlueScore);
+        PlayerPrefs.SetInt("DHP", PlayerPrefs.GetInt("DHP") - RedScore);
+        if (PlayerPrefs.GetInt("GHP") > 0 && PlayerPrefs.GetInt("DHP") > 0)
+        {
+            
+            SceneManager.LoadScene("main");
+        }
+        else if(PlayerPrefs.GetInt("GHP") <= 0||PlayerPrefs.GetInt("DHP") <= 0)
+        {
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene("MainMenu");
+        }
 
+
+    }
 
 }

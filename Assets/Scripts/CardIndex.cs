@@ -17,8 +17,8 @@ public class CardIndex : MonoBehaviour
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
-    [SerializeField] private GameObject Canvas1;
-    [SerializeField] private GameObject Canvas2;
+    
+    private List<TMP_Text> TextToRotate = new List<TMP_Text>(); 
      
 
 
@@ -27,9 +27,6 @@ public class CardIndex : MonoBehaviour
 
     private void Start()
     {
-        
-
-
         if (IsYoursRed)
         {
             rot = new Vector3(0f, 180f, 180f);
@@ -39,18 +36,19 @@ public class CardIndex : MonoBehaviour
         GMP2 = GameObject.Find("GameManagerPlayer2");
         transform.position = new Vector3(20, 0, 0);
         this.gameObject.SetActive(false);
-        RedAtkTextTop.text = ATKtop.ToString();
-        RedAtkTextBottom.text = ATKbottom.ToString();
-        RedAtkTextLeft.text = ATKleft.ToString();
-        RedAtkTextRight.text = ATKright.ToString();
+        RedAtkTextBottom.text = ATKtop.ToString();
+        RedAtkTextTop.text = ATKbottom.ToString();
+        RedAtkTextRight.text = ATKleft.ToString();
+        RedAtkTextLeft.text = ATKright.ToString();
         BlueAtkTextTop.text = ATKtop.ToString();
         BlueAtkTextBottom.text = ATKbottom.ToString();
         BlueAtkTextLeft.text = ATKleft.ToString();
-        BlueAtkTextRight.text = ATKright.ToString();
+        BlueAtkTextRight.text = ATKright.ToString();      
     }
 
     private void Update()
     {
+        
         cardStartPosP2 = GMP2.GetComponent<GameManagerP2>().HandSlotsP2[HandIndex].position;
         cardStartPosP1 = GMP1.GetComponent<GameManagerP1>().HandSlotsP1[HandIndex].position;
         transform.rotation = Quaternion.Euler(rot);
@@ -99,9 +97,17 @@ public class CardIndex : MonoBehaviour
         {
             rot = new Vector3(0f, 180f, 180f);
         }
+        RedAtkTextBottom.text = ATKtop.ToString();
+        RedAtkTextTop.text = ATKbottom.ToString();
+        RedAtkTextRight.text = ATKleft.ToString();
+        RedAtkTextLeft.text = ATKright.ToString();
+        BlueAtkTextBottom.text = ATKtop.ToString();
+        BlueAtkTextTop.text = ATKbottom.ToString();
+        BlueAtkTextRight.text = ATKleft.ToString();
+        BlueAtkTextLeft.text = ATKright.ToString();
     }
     public void EndTurnRotateP1POV()
-    {
+    {      
         if (IsYoursBlue)
         {
             rot = new Vector3(0f, 0f, 0f);
@@ -110,7 +116,15 @@ public class CardIndex : MonoBehaviour
         {
             rot = new Vector3(0f, 0f, 180f);
         }
-        
+        RedAtkTextTop.text = ATKtop.ToString();
+        RedAtkTextBottom.text = ATKbottom.ToString();
+        RedAtkTextLeft.text = ATKleft.ToString();
+        RedAtkTextRight.text = ATKright.ToString();
+        BlueAtkTextTop.text = ATKtop.ToString();
+        BlueAtkTextBottom.text = ATKbottom.ToString();
+        BlueAtkTextLeft.text = ATKleft.ToString();
+        BlueAtkTextRight.text = ATKright.ToString();
+
     }
 
 }
