@@ -900,8 +900,9 @@ MonoBehaviour:
   IsYoursRed: 0
   IsInHand: 0
   timer: 0
-  Canvas1: {fileID: 0}
-  Canvas2: {fileID: 0}
+  Canvasen:
+  - {fileID: 6528965693872330611}
+  - {fileID: 4814532618929591194}
 --- !u!1 &7676057166235748495
 GameObject:
   m_ObjectHideFlags: 0

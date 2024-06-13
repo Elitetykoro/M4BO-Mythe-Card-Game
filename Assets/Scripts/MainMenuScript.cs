@@ -9,7 +9,7 @@ public class MainMenuScript : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("main");
         }
 
     }
