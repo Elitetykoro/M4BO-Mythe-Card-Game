@@ -82,22 +82,23 @@ public class TurnManager : MonoBehaviour
     }
     public void TurnChangeToP2()
     {
-        TurnCount++;
+        
         StartCoroutine(RotateToP2());
-        P2Cam.SetActive(true);
-        P1Cam.SetActive(false);
     }
     public void TurnChangeToP1()
     {     
-        TurnCount++;
+        
         StartCoroutine(RotateToP1());
-        P1Cam.SetActive(true);
-        P2Cam.SetActive(false);
     }
 
     IEnumerator RotateToP2()
     {
-        for(int i = 0; i <CardsOnBoard.Count; i++)
+        
+        yield return new WaitForSeconds(0.6f);
+        TurnCount++;
+        P2Cam.SetActive(true);
+        P1Cam.SetActive(false);
+        for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP2POV();
         }
@@ -106,11 +107,15 @@ public class TurnManager : MonoBehaviour
     }
     IEnumerator RotateToP1()
     {
-        yield return new WaitForEndOfFrame();
+        
+        yield return new WaitForSeconds(0.6f);
+        TurnCount++;
+        P1Cam.SetActive(true);
+        P2Cam.SetActive(false);
         for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP1POV();
-        }
+        } 
         yield return new WaitForEndOfFrame();
         yield break;
     }
