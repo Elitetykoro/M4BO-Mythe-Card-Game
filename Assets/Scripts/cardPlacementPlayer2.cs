@@ -16,6 +16,7 @@ public class cardPlacementPlayer2 : MonoBehaviour
     public GameObject[] GridSquares;
     public bool ThisPlayerActive = true;
     public GameObject TMR;
+    public GameObject PlacementParticle;
     //private bool isHoldigCard = false;
     // Start is called before the first frame update
     private void Start()
@@ -64,10 +65,12 @@ public class cardPlacementPlayer2 : MonoBehaviour
                 {
 
                     StopCoroutine(HoldCard());
+                    Vector3 ParticlePos = hoveringGrid.transform.position + new Vector3(0, 1, 0);
                     int placedIndex = hoveringGrid.GetComponent<GridIndex>().gridIndex;
                     hoveringGrid.GetComponent<GridIndex>().PlacedCard = heldCard;
                     heldCard.transform.position = hoveringGrid.transform.position;
                     hoveringGrid.GetComponent<GridIndex>().IsFilledWithCard = true;
+                    Instantiate(PlacementParticle, ParticlePos, Quaternion.Euler(90,0,0));
                     heldCard.GetComponent<BoxCollider>().enabled = true;
                     switch (placedIndex)
                     {
