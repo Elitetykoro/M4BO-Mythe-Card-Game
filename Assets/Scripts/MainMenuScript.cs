@@ -10,6 +10,7 @@ public class MainMenuScript : MonoBehaviour
         if (Input.anyKey)
         {
             SceneManager.LoadScene("main");
+            PlayerPrefs.DeleteAll();
         }
 
     }
