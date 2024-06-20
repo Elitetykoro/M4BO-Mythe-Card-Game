@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BLAU
-    second: {fileID: 2100000, guid: c89c969edaef1d2479a3cd061b963c2e, type: 2}
+    second: {fileID: 2100000, guid: e526c08eba8016b4b80dd158a540a2f7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ROWD
-    second: {fileID: 2100000, guid: cacfdfbbef10ea94bada62ade3ecb3fb, type: 2}
+    second: {fileID: 2100000, guid: 9983566284ad24c45b6b4d420d7445cd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
