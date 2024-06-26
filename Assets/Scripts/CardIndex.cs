@@ -62,7 +62,7 @@ public class CardIndex : MonoBehaviour
     {
         if (!IsYoursBlue)
         {
-            rot.z = 0f;
+            rot.z += 180f;
             IsYoursBlue = true; 
             IsYoursRed = false;
         }  
@@ -71,7 +71,7 @@ public class CardIndex : MonoBehaviour
     {
         if (!IsYoursRed) 
         {
-            rot.z = 180f;
+            rot.z = 0f;
             IsYoursBlue = false;
             IsYoursRed = true;
         }
@@ -91,7 +91,7 @@ public class CardIndex : MonoBehaviour
     {
         if (IsYoursBlue)
         {
-            rot = new Vector3(0f, 180f, 0f);
+            rot = new Vector3(0f, 0f, 0f);
         }
         if (IsYoursRed)
         {
