@@ -7,7 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: 60cd85c3004ff724ca0f109853a46d2e
+    guid: f12276557ff226043a91b5b2e31b29cf
+  - enabled: 1
+    path: Assets/Scenes/RoundinBetweenScene.unity
+    guid: 29efed07683aba248b1b0e0f90de1146
   - enabled: 1
     path: Assets/Scenes/main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

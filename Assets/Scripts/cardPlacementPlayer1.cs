@@ -18,6 +18,9 @@ public class cardPlacementPlayer1 : MonoBehaviour
     public bool ThisPlayerActive = true;
     public GameObject TMR;
     public GameObject PlacementParticle;
+    [SerializeField] private AudioClip CardPlacementSound;
+    [SerializeField] private AudioClip CardPickUpSound;
+    [SerializeField] private AudioSource AudioSource;
     //private bool isHoldigCard = false;
     // Start is called before the first frame update
     private void Start()
@@ -50,6 +53,8 @@ public class cardPlacementPlayer1 : MonoBehaviour
                 {
                     isHoldingCard = true;
                     heldCard.GetComponent<BoxCollider>().enabled = false;
+                    AudioSource.clip = CardPickUpSound;
+                    AudioSource.Play();
                     StartCoroutine(HoldCard());
                 }
                 else
@@ -66,7 +71,9 @@ public class cardPlacementPlayer1 : MonoBehaviour
                 {
 
                     StopCoroutine(HoldCard());
-                    Vector3 ParticlePos = hoveringGrid.transform.position + new Vector3(0,1,0);
+                    AudioSource.clip = CardPlacementSound;
+                    AudioSource.Play();
+                    Vector3 ParticlePos = hoveringGrid.transform.position + new Vector3(0,0.25f,0);
                     int placedIndex = hoveringGrid.GetComponent<GridIndex>().gridIndex;
                     hoveringGrid.GetComponent<GridIndex>().PlacedCard = heldCard;
                     heldCard.transform.position = hoveringGrid.transform.position;

@@ -82,13 +82,18 @@ public class TurnManager : MonoBehaviour
     }
     public void TurnChangeToP2()
     {
-        
-        StartCoroutine(RotateToP2());
+
+        if(TurnCount != 8)
+        {
+            StartCoroutine(RotateToP2());
+        }
     }
     public void TurnChangeToP1()
-    {     
-        
-        StartCoroutine(RotateToP1());
+    {
+        if (TurnCount != 8)
+        {
+            StartCoroutine(RotateToP1());
+        }
     }
 
     IEnumerator RotateToP2()
@@ -122,12 +127,13 @@ public class TurnManager : MonoBehaviour
 
     private void EndRound()
     {
-        PlayerPrefs.SetInt("GHP", PlayerPrefs.GetInt("GHP") - BlueScore);
-        PlayerPrefs.SetInt("DHP", PlayerPrefs.GetInt("DHP") - RedScore);
+        PlayerPrefs.SetInt("GATK", RedScore);
+        PlayerPrefs.SetInt("DATK", BlueScore);
+        
         if (PlayerPrefs.GetInt("GHP") > 0 && PlayerPrefs.GetInt("DHP") > 0)
         {
             
-            SceneManager.LoadScene("main");
+            SceneManager.LoadScene("RoundinBetweenScene");
         }
         else if(PlayerPrefs.GetInt("GHP") <= 0||PlayerPrefs.GetInt("DHP") <= 0)
         {
