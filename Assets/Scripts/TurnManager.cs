@@ -160,7 +160,7 @@ public class TurnManager : MonoBehaviour
 
     private void EndRound()
     {
-        PlayerPrefs.SetInt("GATK", RedScore);
+        PlayerPrefs.SetInt("GATK", RedScore * 10);
         PlayerPrefs.SetInt("DATK", BlueScore);
         
         if (PlayerPrefs.GetInt("GHP") > 0 && PlayerPrefs.GetInt("DHP") > 0)
