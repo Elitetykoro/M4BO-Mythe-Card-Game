@@ -56,7 +56,7 @@ public class Inbetweenmanager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             if(PlayerPrefs.GetInt("DHP") <= 0|| PlayerPrefs.GetInt("GHP") <= 0)
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("main");
             }
             else
             {

@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Codice.CM.WorkspaceServer.DataStore.WkTree;
 
 public class TurnManager : MonoBehaviour
 {
     [SerializeField] GameObject P2Cam;
     [SerializeField] GameObject P1Cam;
+    [SerializeField] GameObject P2Cam2;
+    [SerializeField] GameObject P1Cam2;
     [SerializeField]private GameObject[] CardsToRotateOnTurnEnd;
+    [SerializeField]private Animator AnimatorDavid;
+    [SerializeField]private Animator AnimatorGoliath;
     private Vector3 rot;
     [SerializeField]private int TurnCount;
     private int BlueScore;
@@ -22,6 +27,7 @@ public class TurnManager : MonoBehaviour
     public TMP_Text DavidHpText;
     private int GoliathHealth = 35;
     private int DavidHealth = 30;
+
     
 
 
@@ -79,6 +85,14 @@ public class TurnManager : MonoBehaviour
             //    WinTextTie.SetActive(true);
             //}
         }
+        if (PlayerPrefs.GetInt("GHP") <= 0)
+        {
+            StartCoroutine(DavidWin());
+        }
+        else if (PlayerPrefs.GetInt("DHP") <= 0)
+        {
+            StartCoroutine(GoliathWin());
+        }
     }
     public void TurnChangeToP2()
     {
@@ -99,10 +113,16 @@ public class TurnManager : MonoBehaviour
     IEnumerator RotateToP2()
     {
         
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         TurnCount++;
-        P2Cam.SetActive(true);
+        P1Cam2.SetActive(true);
         P1Cam.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        P2Cam2.SetActive(true);
+        P1Cam2.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        P2Cam.SetActive(true);
+        P2Cam2.SetActive(false);
         for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP2POV();
@@ -112,11 +132,17 @@ public class TurnManager : MonoBehaviour
     }
     IEnumerator RotateToP1()
     {
-        
-        yield return new WaitForSeconds(0.6f);
+
+        yield return new WaitForSeconds(0.2f);
         TurnCount++;
-        P1Cam.SetActive(true);
+        P2Cam2.SetActive(true);
         P2Cam.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        P1Cam2.SetActive(true);
+        P2Cam2.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        P1Cam.SetActive(true);
+        P1Cam2.SetActive(false);
         for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP1POV();
@@ -128,20 +154,49 @@ public class TurnManager : MonoBehaviour
     private void EndRound()
     {
         PlayerPrefs.SetInt("GATK", RedScore);
-        PlayerPrefs.SetInt("DATK", BlueScore);
+        PlayerPrefs.SetInt("DATK", BlueScore * 10);
         
         if (PlayerPrefs.GetInt("GHP") > 0 && PlayerPrefs.GetInt("DHP") > 0)
         {
-            
             SceneManager.LoadScene("RoundinBetweenScene");
         }
-        else if(PlayerPrefs.GetInt("GHP") <= 0||PlayerPrefs.GetInt("DHP") <= 0)
-        {
-            PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene("MainMenu");
-        }
+        
 
 
+    }
+    private IEnumerator DavidWin()
+    {
+        yield return new WaitForSeconds(0.6f);
+        P1Cam2.SetActive(true);
+        P2Cam2.SetActive(false);
+        P2Cam.SetActive(false);
+        P1Cam.SetActive(false);
+        AnimatorGoliath.SetBool("loss", true);
+        yield return new WaitForSeconds(3f);
+        P2Cam2.SetActive(true);
+        P1Cam2.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        
+        AnimatorDavid.SetBool("Win", true);
+        yield return new WaitForSeconds(3f);
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("MainMenu");
+    }
+    private IEnumerator GoliathWin()
+    {
+        yield return new WaitForSeconds(0.6f);
+        P2Cam2.SetActive(true);
+        P1Cam2.SetActive(false);
+        P2Cam.SetActive(false);
+        P1Cam.SetActive(false);
+        AnimatorDavid.SetBool("Loss", true);
+        yield return new WaitForSeconds(3f);
+        P1Cam2.SetActive(true);
+        P2Cam2.SetActive(false);
+        AnimatorGoliath.SetBool("win", true);
+        yield return new WaitForSeconds(6f);
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
