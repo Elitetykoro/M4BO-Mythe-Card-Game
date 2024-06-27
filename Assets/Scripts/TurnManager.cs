@@ -43,6 +43,14 @@ public class TurnManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("DHP", DavidHealth);
         }
+        if (PlayerPrefs.GetInt("GHP") <= 0)
+        {
+            StartCoroutine(DavidWin());
+        }
+        else if (PlayerPrefs.GetInt("DHP") <= 0)
+        {
+            StartCoroutine(GoliathWin());
+        }
     }
 
     private void Update()
@@ -85,14 +93,7 @@ public class TurnManager : MonoBehaviour
             //    WinTextTie.SetActive(true);
             //}
         }
-        if (PlayerPrefs.GetInt("GHP") <= 0)
-        {
-            StartCoroutine(DavidWin());
-        }
-        else if (PlayerPrefs.GetInt("DHP") <= 0)
-        {
-            StartCoroutine(GoliathWin());
-        }
+        
     }
     public void TurnChangeToP2()
     {
@@ -120,13 +121,13 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         P2Cam2.SetActive(true);
         P1Cam2.SetActive(false);
-        yield return new WaitForSeconds(.5f);
-        P2Cam.SetActive(true);
-        P2Cam2.SetActive(false);
         for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP2POV();
         }
+        yield return new WaitForSeconds(.5f);
+        P2Cam.SetActive(true);
+        P2Cam2.SetActive(false);
         yield return new WaitForEndOfFrame();
         yield break;
     }
@@ -140,21 +141,21 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         P1Cam2.SetActive(true);
         P2Cam2.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        P1Cam.SetActive(true);
-        P1Cam2.SetActive(false);
         for (int i = 0; i < CardsOnBoard.Count; i++)
         {
             CardsOnBoard[i].GetComponent<CardIndex>().EndTurnRotateP1POV();
-        } 
+        }
+        yield return new WaitForSeconds(0.5f);
+        P1Cam.SetActive(true);
+        P1Cam2.SetActive(false);
         yield return new WaitForEndOfFrame();
         yield break;
     }
 
     private void EndRound()
     {
-        PlayerPrefs.SetInt("GATK", RedScore);
-        PlayerPrefs.SetInt("DATK", BlueScore * 10);
+        PlayerPrefs.SetInt("GATK", RedScore  * 10);
+        PlayerPrefs.SetInt("DATK", BlueScore);
         
         if (PlayerPrefs.GetInt("GHP") > 0 && PlayerPrefs.GetInt("DHP") > 0)
         {
@@ -167,34 +168,47 @@ public class TurnManager : MonoBehaviour
     private IEnumerator DavidWin()
     {
         yield return new WaitForSeconds(0.6f);
+        Debug.Log("DavidWin: Activating P1Cam2, Deactivating P2Cam2, P2Cam, P1Cam");
         P1Cam2.SetActive(true);
         P2Cam2.SetActive(false);
         P2Cam.SetActive(false);
         P1Cam.SetActive(false);
+
         AnimatorGoliath.SetBool("loss", true);
         yield return new WaitForSeconds(3f);
+
+        Debug.Log("DavidWin: Activating P2Cam2, Deactivating P1Cam2");
         P2Cam2.SetActive(true);
         P1Cam2.SetActive(false);
+
         yield return new WaitForSeconds(3f);
-        
+
         AnimatorDavid.SetBool("Win", true);
         yield return new WaitForSeconds(3f);
+
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("MainMenu");
     }
+
     private IEnumerator GoliathWin()
     {
         yield return new WaitForSeconds(0.6f);
+        Debug.Log("GoliathWin: Activating P2Cam2, Deactivating P1Cam2, P2Cam, P1Cam");
         P2Cam2.SetActive(true);
         P1Cam2.SetActive(false);
         P2Cam.SetActive(false);
         P1Cam.SetActive(false);
+
         AnimatorDavid.SetBool("Loss", true);
         yield return new WaitForSeconds(3f);
+
+        Debug.Log("GoliathWin: Activating P1Cam2, Deactivating P2Cam2");
         P1Cam2.SetActive(true);
         P2Cam2.SetActive(false);
+
         AnimatorGoliath.SetBool("win", true);
         yield return new WaitForSeconds(6f);
+
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("MainMenu");
     }

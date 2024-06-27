@@ -17,9 +17,9 @@ public class CardIndex : MonoBehaviour
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
-    
-    private List<TMP_Text> TextToRotate = new List<TMP_Text>(); 
-     
+
+    private List<TMP_Text> TextToRotate = new List<TMP_Text>();
+
 
 
     private GameObject GMP1;
@@ -43,16 +43,16 @@ public class CardIndex : MonoBehaviour
         BlueAtkTextTop.text = ATKtop.ToString();
         BlueAtkTextBottom.text = ATKbottom.ToString();
         BlueAtkTextLeft.text = ATKleft.ToString();
-        BlueAtkTextRight.text = ATKright.ToString();      
+        BlueAtkTextRight.text = ATKright.ToString();
     }
 
     private void Update()
     {
-        
+
         cardStartPosP2 = GMP2.GetComponent<GameManagerP2>().HandSlotsP2[HandIndex].position;
         cardStartPosP1 = GMP1.GetComponent<GameManagerP1>().HandSlotsP1[HandIndex].position;
         transform.rotation = Quaternion.Euler(rot);
-        if(timer <= 1)
+        if (timer <= 1)
         {
             timer += Time.deltaTime;
         }
@@ -62,16 +62,16 @@ public class CardIndex : MonoBehaviour
     {
         if (!IsYoursBlue)
         {
-            rot.z += 180f;
-            IsYoursBlue = true; 
+            rot.z = 0f;
+            IsYoursBlue = true;
             IsYoursRed = false;
-        }  
+        }
     }
     public void FlipToRed()
     {
-        if (!IsYoursRed) 
+        if (!IsYoursRed)
         {
-            rot.z = 0f;
+            rot.z = 180f;
             IsYoursBlue = false;
             IsYoursRed = true;
         }
@@ -91,7 +91,7 @@ public class CardIndex : MonoBehaviour
     {
         if (IsYoursBlue)
         {
-            rot = new Vector3(0f, 0f, 0f);
+            rot = new Vector3(0f, 180f, 0f);
         }
         if (IsYoursRed)
         {
@@ -107,7 +107,7 @@ public class CardIndex : MonoBehaviour
         BlueAtkTextLeft.text = ATKright.ToString();
     }
     public void EndTurnRotateP1POV()
-    {      
+    {
         if (IsYoursBlue)
         {
             rot = new Vector3(0f, 0f, 0f);
