@@ -14,11 +14,14 @@ public class CardIndex : MonoBehaviour
     [SerializeField] private TMP_Text BlueAtkTextTop, BlueAtkTextBottom, BlueAtkTextRight, BlueAtkTextLeft;
     [SerializeField] public bool IsYoursBlue;
     [SerializeField] public bool IsYoursRed;
+    [SerializeField] private GameObject TM;
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
 
-    private List<TMP_Text> TextToRotate = new List<TMP_Text>();
+
+
+
 
 
 
@@ -65,6 +68,14 @@ public class CardIndex : MonoBehaviour
             rot.z = 0f;
             IsYoursBlue = true;
             IsYoursRed = false;
+            //if (TM.GetComponent<TurnManager>().RedTurn)
+            //{
+            //    rot = new Vector3(0f, 180f, 0f);
+            //}
+            //if (TM.GetComponent<TurnManager>().BlueTurn)
+            //{
+            //    rot = new Vector3(0f, 0f, 0f);
+            //}
         }
     }
     public void FlipToRed()
@@ -74,6 +85,14 @@ public class CardIndex : MonoBehaviour
             rot.z = 180f;
             IsYoursBlue = false;
             IsYoursRed = true;
+            //if (TM.GetComponent<TurnManager>().RedTurn)
+            //{
+            //    rot = new Vector3(0f, 180f, 180f);
+            //}
+            //if (TM.GetComponent<TurnManager>().BlueTurn)
+            //{
+            //    rot = new Vector3(0f, 0f, 180f);
+            //}
         }
     }
 
