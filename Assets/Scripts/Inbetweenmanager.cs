@@ -30,10 +30,7 @@ public class Inbetweenmanager : MonoBehaviour
     private void Update()
     {
         
-        if (Input.anyKey)
-        {
-            SceneManager.LoadScene("main");
-        }
+       
     }
     IEnumerator DamageText()
     {
