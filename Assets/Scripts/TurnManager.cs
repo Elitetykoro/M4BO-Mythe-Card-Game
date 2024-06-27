@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Codice.CM.WorkspaceServer.DataStore.WkTree;
+
 
 public class TurnManager : MonoBehaviour
 {
@@ -27,6 +27,8 @@ public class TurnManager : MonoBehaviour
     public TMP_Text DavidHpText;
     private int GoliathHealth = 35;
     private int DavidHealth = 30;
+    public bool BlueTurn = true;
+    public bool RedTurn = false;
 
     
 
@@ -100,6 +102,8 @@ public class TurnManager : MonoBehaviour
 
         if(TurnCount != 8)
         {
+            RedTurn = true;
+            BlueTurn = false;
             StartCoroutine(RotateToP2());
         }
     }
@@ -107,6 +111,8 @@ public class TurnManager : MonoBehaviour
     {
         if (TurnCount != 8)
         {
+            RedTurn = false;
+            BlueTurn = true;
             StartCoroutine(RotateToP1());
         }
     }
