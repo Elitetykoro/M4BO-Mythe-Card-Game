@@ -14,11 +14,10 @@ public class CardIndex : MonoBehaviour
     [SerializeField] private TMP_Text BlueAtkTextTop, BlueAtkTextBottom, BlueAtkTextRight, BlueAtkTextLeft;
     [SerializeField] public bool IsYoursBlue;
     [SerializeField] public bool IsYoursRed;
-    [SerializeField] private GameObject Model;
+    [SerializeField] private GameObject TM;
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
-    
 
 
 
@@ -33,7 +32,7 @@ public class CardIndex : MonoBehaviour
     {
         if (IsYoursRed)
         {
-            rot = new Vector3(0f, 180f, 180f);
+            rot = new Vector3(0f, 0f, 180f);
             transform.rotation = Quaternion.Euler(rot);
         }
         GMP1 = GameObject.Find("GameManagerPlayer1");
@@ -52,10 +51,7 @@ public class CardIndex : MonoBehaviour
 
     private void Update()
     {
-        if (IsYoursRed)
-        {
-            Model.transform.rotation = Quaternion.Euler(90f,0f,0f);
-        }
+
         cardStartPosP2 = GMP2.GetComponent<GameManagerP2>().HandSlotsP2[HandIndex].position;
         cardStartPosP1 = GMP1.GetComponent<GameManagerP1>().HandSlotsP1[HandIndex].position;
         transform.rotation = Quaternion.Euler(rot);
@@ -72,14 +68,7 @@ public class CardIndex : MonoBehaviour
             rot.z = 0f;
             IsYoursBlue = true;
             IsYoursRed = false;
-            //if (TM.GetComponent<TurnManager>().RedTurn)
-            //{
-            //    rot = new Vector3(0f, 180f, 0f);
-            //}
-            //if (TM.GetComponent<TurnManager>().BlueTurn)
-            //{
-            //    rot = new Vector3(0f, 0f, 0f);
-            //}
+            
         }
     }
     public void FlipToRed()
@@ -89,14 +78,7 @@ public class CardIndex : MonoBehaviour
             rot.z = 180f;
             IsYoursBlue = false;
             IsYoursRed = true;
-            //if (TM.GetComponent<TurnManager>().RedTurn)
-            //{
-            //    rot = new Vector3(0f, 180f, 180f);
-            //}
-            //if (TM.GetComponent<TurnManager>().BlueTurn)
-            //{
-            //    rot = new Vector3(0f, 0f, 180f);
-            //}
+            
         }
     }
 
@@ -118,7 +100,7 @@ public class CardIndex : MonoBehaviour
         }
         if (IsYoursRed)
         {
-            rot = new Vector3(0f, 180f, 180f);
+            rot = new Vector3(0f, 0f, 180f);
         }
         RedAtkTextBottom.text = ATKtop.ToString();
         RedAtkTextTop.text = ATKbottom.ToString();
@@ -137,7 +119,7 @@ public class CardIndex : MonoBehaviour
         }
         if (IsYoursRed)
         {
-            rot = new Vector3(0f, 0f, 180f);
+            rot = new Vector3(0f, 180f, 180f);
         }
         RedAtkTextTop.text = ATKtop.ToString();
         RedAtkTextBottom.text = ATKbottom.ToString();
