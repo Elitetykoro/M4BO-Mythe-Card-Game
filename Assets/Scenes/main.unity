@@ -5631,6 +5631,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -4076393205756338690, guid: 4efac77712cb626418891f4a6463c78b, type: 2}
+    - target: {fileID: 5645651330849537310, guid: 1b319966a75ade5449aa87df12615226, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5871937221272538885, guid: 1b319966a75ade5449aa87df12615226, type: 3}
       propertyPath: m_Name
       value: BearCard
@@ -5647,6 +5651,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -4076393205756338690, guid: 4efac77712cb626418891f4a6463c78b, type: 2}
+    - target: {fileID: 8698878519171772767, guid: 1b319966a75ade5449aa87df12615226, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9065166530392156349, guid: 1b319966a75ade5449aa87df12615226, type: 3}
       propertyPath: m_RootOrder
       value: -1
