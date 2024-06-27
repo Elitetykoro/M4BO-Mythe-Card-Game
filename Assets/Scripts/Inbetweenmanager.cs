@@ -44,14 +44,14 @@ public class Inbetweenmanager : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.1f);
                 PlayerPrefs.SetInt("GHP", PlayerPrefs.GetInt("GHP") - 1);
-                GoliathHpText.text = PlayerPrefs.GetInt("GHP").ToString();
+                GoliathHpText.text = (PlayerPrefs.GetInt("GHP").ToString() + " - " + PlayerPrefs.GetInt("DATK").ToString());
             }
             yield return new WaitForSeconds(0.5f);
             for (int i = PlayerPrefs.GetInt("GATK"); i > 0; i--)
             {
                 yield return new WaitForSeconds(0.1f);
                 PlayerPrefs.SetInt("DHP", PlayerPrefs.GetInt("DHP") - 1);
-                DavidHpText.text = PlayerPrefs.GetInt("DHP").ToString();
+                DavidHpText.text = (PlayerPrefs.GetInt("DHP").ToString() + " - " + PlayerPrefs.GetInt("GATK").ToString());
             }
             yield return new WaitForEndOfFrame();
             if(PlayerPrefs.GetInt("DHP") <= 0|| PlayerPrefs.GetInt("GHP") <= 0)

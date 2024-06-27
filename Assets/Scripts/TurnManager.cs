@@ -11,6 +11,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] GameObject P1Cam;
     [SerializeField] GameObject P2Cam2;
     [SerializeField] GameObject P1Cam2;
+    [SerializeField] GameObject P1WinCam;
+    [SerializeField] GameObject P2WinCam;
     [SerializeField]private GameObject[] CardsToRotateOnTurnEnd;
     [SerializeField]private Animator AnimatorDavid;
     [SerializeField]private Animator AnimatorGoliath;
@@ -184,7 +186,7 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         Debug.Log("DavidWin: Activating P2Cam2, Deactivating P1Cam2");
-        P2Cam2.SetActive(true);
+        P1WinCam.SetActive(true);
         P1Cam2.SetActive(false);
 
         yield return new WaitForSeconds(3f);
@@ -209,7 +211,7 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         Debug.Log("GoliathWin: Activating P1Cam2, Deactivating P2Cam2");
-        P1Cam2.SetActive(true);
+        P2WinCam.SetActive(true);
         P2Cam2.SetActive(false);
 
         AnimatorGoliath.SetBool("win", true);
