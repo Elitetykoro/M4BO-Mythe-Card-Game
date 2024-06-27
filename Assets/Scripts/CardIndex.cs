@@ -14,10 +14,11 @@ public class CardIndex : MonoBehaviour
     [SerializeField] private TMP_Text BlueAtkTextTop, BlueAtkTextBottom, BlueAtkTextRight, BlueAtkTextLeft;
     [SerializeField] public bool IsYoursBlue;
     [SerializeField] public bool IsYoursRed;
-    [SerializeField] private GameObject TM;
+    [SerializeField] private GameObject Model;
     private Vector3 rot;
     public bool IsInHand;
     public float timer;
+    
 
 
 
@@ -51,7 +52,10 @@ public class CardIndex : MonoBehaviour
 
     private void Update()
     {
-
+        if (IsYoursRed)
+        {
+            Model.transform.rotation = Quaternion.Euler(90f,0f,0f);
+        }
         cardStartPosP2 = GMP2.GetComponent<GameManagerP2>().HandSlotsP2[HandIndex].position;
         cardStartPosP1 = GMP1.GetComponent<GameManagerP1>().HandSlotsP1[HandIndex].position;
         transform.rotation = Quaternion.Euler(rot);
