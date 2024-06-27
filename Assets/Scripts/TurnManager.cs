@@ -43,6 +43,14 @@ public class TurnManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("DHP", DavidHealth);
         }
+        if (PlayerPrefs.GetInt("GHP") <= 0)
+        {
+            StartCoroutine(DavidWin());
+        }
+        else if (PlayerPrefs.GetInt("DHP") <= 0)
+        {
+            StartCoroutine(GoliathWin());
+        }
     }
 
     private void Update()
@@ -85,14 +93,7 @@ public class TurnManager : MonoBehaviour
             //    WinTextTie.SetActive(true);
             //}
         }
-        if (PlayerPrefs.GetInt("GHP") <= 0)
-        {
-            StartCoroutine(DavidWin());
-        }
-        else if (PlayerPrefs.GetInt("DHP") <= 0)
-        {
-            StartCoroutine(GoliathWin());
-        }
+        
     }
     public void TurnChangeToP2()
     {
